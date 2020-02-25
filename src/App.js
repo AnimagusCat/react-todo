@@ -39,9 +39,9 @@ class App extends Component {
           <Route exact path='/' component={Home} />
           <Route path='/about' component={About} />
           <Route path='/contact' component={Contact} />
-          <h1 className="center blue-text">Todo's</h1>
+          {/* <h1 className="center blue-text">Todo's</h1>
           <Todos todos={this.state.todos} deleteToDo={this.deleteToDo}/>
-          <AddTodo addTodo={this.addTodo} />
+          <AddTodo addTodo={this.addTodo} /> */}
         </div>
       </BrowserRouter>
     );
