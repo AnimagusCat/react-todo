@@ -7,9 +7,9 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 const Navbar = (props) => {
     //this is a programmatic redirect
     //If user goes to any page, after 2 secs will be redirected to the about page
-    setTimeout(() => {
-        props.history.push('/about')
-    }, 2000)
+    // setTimeout(() => {
+    //     props.history.push('/about')
+    // }, 2000)
 
     return (
        <nav className="nav-wrapper red darken-3">
