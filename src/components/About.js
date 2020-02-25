@@ -1,4 +1,5 @@
 import React from 'react'
+import Rainbow from '../hoc/Rainbow'
 
 const About = () => {
     return (
@@ -9,4 +10,6 @@ const About = () => {
     )
 }
 
-export default About
+export default Rainbow(About)
+//'About' component is passed as a parameter of the Rainbow higher-order component function, so 'About' is the WrappedComponent
+//eg. const Rainbow = (WrappedComponent) => {}
