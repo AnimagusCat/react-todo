@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Todos from './Todos';
 import AddTodo from './AddTodo';
 import Navbar from './components/Navbar';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'; 
+//Switch tells route that at any time, only 1 route should take precedence. eg. if /contact component is loaded, don't load /:post_id too
+
 import Home from './components/Home';
 import Contact from './components/Contact';
 import About from './components/About';
@@ -37,10 +39,12 @@ class App extends Component {
       <BrowserRouter>
         <div className="todo-app container">
           <Navbar />
-          <Route exact path='/' component={Home} />
-          <Route path='/about' component={About} />
-          <Route path='/contact' component={Contact} />
-          <Route path='/:post_id' component={Post} />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/about' component={About} />
+            <Route path='/contact' component={Contact} />
+            <Route path='/:post_id' component={Post} />
+          </Switch>
           {/* <h1 className="center blue-text">Todo's</h1>
           <Todos todos={this.state.todos} deleteToDo={this.deleteToDo}/>
           <AddTodo addTodo={this.addTodo} /> */}
