@@ -7,6 +7,19 @@ const initState = {
 }
 
 const rootReducer = (state = initState, action) => {
+    //check action type first 
+    if (action.type === 'DELETE_POST') {
+        //creates a new array without the post with matching id
+        let newPosts = state.posts.filter(post => {
+             return action.id !== post.id
+        });
+        return {
+            //get all the properties from the state first
+            ...state,
+            //then overwrite the posts property with the new posts
+            posts: newPosts
+        }
+    }
     return state;
 }
 

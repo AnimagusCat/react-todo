@@ -18,7 +18,16 @@ class Post extends Component {
                 
     //         })
     // }
+
+    handleClick = () => {
+        //run the deletePost function
+        this.props.deletePost(this.props.post.id);
+
+        //redirects the user to the home page after deletion
+        this.props.history.push('/');
+    }
     render() {
+        console.log(this.props);
         // const post = this.state.post ? (
         const post = this.props.post ? (
             <div className="post">
@@ -26,6 +35,9 @@ class Post extends Component {
                 {/* <p>{this.state.post.body}</p> */}
                 <h4 className="center">{this.props.post.title}</h4>
                 <p>{this.props.post.body}</p>
+                <div className="center">
+                    <button className="btn grey" onClick={this.handleClick}>Delete Post</button>
+                </div>
             </div>
         ) : (
             <div className="center">Loading post...</div>
@@ -58,7 +70,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         //deletePost property value is a dispatch function that takes in the id to delete
         deletePost: (id) => {
-            //run dispatch function with parameters - type of action and the payload
+            //run dispatch function with parameters - type of action and the payload which will get sent to the rootReducer
             dispatch({type: 'DELETE_POST', id: id})
         }
     }
