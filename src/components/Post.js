@@ -42,6 +42,8 @@ class Post extends Component {
 const mapStatetoProps = (state, ownProps) => {
     //get the post id from the component's own props
     let id = ownProps.match.params.post_id;
+
+    //return the post from the state store if the id matches with the route params
     return {
         post: state.posts.find(post => post.id === id)
         /*another way to write this: 
@@ -50,4 +52,16 @@ const mapStatetoProps = (state, ownProps) => {
         })*/
     }
 }
-export default connect(mapStatetoProps)(Post)
+
+//dispatch function
+const mapDispatchToProps = (dispatch) => {
+    return {
+        //deletePost property value is a dispatch function that takes in the id to delete
+        deletePost: (id) => {
+            //run dispatch function with parameters - type of action and the payload
+            dispatch({type: 'DELETE_POST', id: id})
+        }
+    }
+}
+
+export default connect(mapStatetoProps, mapDispatchToProps)(Post)
